@@ -1,5 +1,3 @@
-function Condition({ condition, children }) {
-  return <>{condition ? children : null}</>;
-}
-
-export default Condition;
+export const Condition = ({ value, children }) => {
+  return <>{value ? children : null}</>;
+};

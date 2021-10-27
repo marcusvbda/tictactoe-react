@@ -1,13 +1,11 @@
 import "./Styles.scss";
-import ResultOverflow from "../ResultOverflow";
-import SquareSection from "../SquareSection";
+import { ResultOverflow } from "../ResultOverflow";
+import { SquareSection } from "../SquareSection";
+import { GameContext } from "../../providers/Game";
+import { useContext } from "react";
 
-function GameBoard() {
-  const matrix = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-  ];
+export const GameBoard = () => {
+  const { matrix, getCurrentPlayer } = useContext(GameContext);
 
   const renderSquares = () => {
     return matrix.map((row, i) => (
@@ -25,11 +23,9 @@ function GameBoard() {
       <div className="gameboard">
         {renderSquares()}
         <div className="gameboard--playername">
-          <b>Próximo Jogador : </b> teste
+          <b>Próximo Jogador : </b> {getCurrentPlayer()}
         </div>
       </div>
     </>
   );
-}
-
-export default GameBoard;
+};

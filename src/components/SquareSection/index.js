@@ -1,9 +1,19 @@
 import "./Styles.scss";
+import { GameContext } from "../../providers/Game";
+import { useContext } from "react";
 
-function SquareSection() {
-  const current_value = "";
+export const SquareSection = ({ row, column }) => {
+  const { matrix, setValue } = useContext(GameContext);
 
-  return <div className="square">{current_value}</div>;
-}
+  const current_value = matrix[row][column];
 
-export default SquareSection;
+  const handleClick = () => {
+    setValue(row, column);
+  };
+
+  return (
+    <div className="square" onClick={handleClick}>
+      {current_value}
+    </div>
+  );
+};

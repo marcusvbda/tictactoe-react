@@ -1,17 +1,25 @@
 import "./Styles.scss";
-import Condition from "../Condition";
+import { Condition } from "../Condition";
+import { useContext } from "react";
+import { GameContext } from "../../providers/Game";
 
-function ResultOverflow() {
-  const label_text = "";
-  const is_finished = false;
+export const ResultOverflow = () => {
+  const label_text = () => (winner ? `${winner} VENCEU` : "SEM VENCEDOR");
+
+  const { winner } = useContext(GameContext);
+  const { getIsCompleted } = useContext(GameContext);
+
+  const is_finished = () => {
+    return getIsCompleted() || winner;
+  };
 
   return (
-    <Condition condition={is_finished}>
+    <Condition value={is_finished()}>
       <div className="result-overflow">
-        <div className="result-overflow--label">{label_text}</div>
+        <div className={`result-overflow--label ${winner && "has-winner"}`}>
+          {label_text()}
+        </div>
       </div>
     </Condition>
   );
-}
-
-export default ResultOverflow;
+};
