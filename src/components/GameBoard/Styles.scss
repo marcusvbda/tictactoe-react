@@ -1,0 +1,26 @@
+.gameboard {
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+
+    .gameboard--playername {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        b {
+            margin-right: 5px;
+        }
+    }
+
+    .gameboard--row {
+        display: flex;
+        flex-direction: row;
+    }
+}
