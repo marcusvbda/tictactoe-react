@@ -1,5 +1,5 @@
-function Condition({condition,children}) {
-    return (<>{condition ? children : null}</>)
+function Condition({ condition, children }) {
+  return <>{condition ? children : null}</>;
 }
 
 export default Condition;
