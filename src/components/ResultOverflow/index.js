@@ -1,5 +1,4 @@
 import "./Styles.scss";
-import { Condition } from "../Condition";
 import { useContext } from "react";
 import { GameContext } from "../../providers/Game";
 
@@ -9,17 +8,17 @@ export const ResultOverflow = () => {
   const { winner } = useContext(GameContext);
   const { getIsCompleted } = useContext(GameContext);
 
-  const is_finished = () => {
+  const getIsFinished = () => {
     return getIsCompleted() || winner;
   };
 
+  if (!getIsFinished()) return null;
+
   return (
-    <Condition value={is_finished()}>
-      <div className="result-overflow">
-        <div className={`result-overflow--label ${winner && "has-winner"}`}>
-          {label_text()}
-        </div>
+    <div className="result-overflow">
+      <div className={`result-overflow--label ${winner && "has-winner"}`}>
+        {label_text()}
       </div>
-    </Condition>
+    </div>
   );
 };

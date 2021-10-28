@@ -7,7 +7,7 @@ import { useContext } from "react";
 export const GameBoard = () => {
   const { matrix, getCurrentPlayer } = useContext(GameContext);
 
-  const renderSquares = () => {
+  const RenderedSquares = () => {
     return matrix.map((row, i) => (
       <div className="gameboard--row" key={i}>
         {row.map((col, y) => (
@@ -21,7 +21,7 @@ export const GameBoard = () => {
     <>
       <ResultOverflow />
       <div className="gameboard">
-        {renderSquares()}
+        <RenderedSquares />
         <div className="gameboard--playername">
           <b>Próximo Jogador : </b> {getCurrentPlayer()}
         </div>
